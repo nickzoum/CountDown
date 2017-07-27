@@ -1,0 +1,297 @@
+    html {
+      overflow-x: hidden;
+      height: 100%;
+    }
+    
+    body {
+      background-color: white;
+      height: 100%;
+      width: 100%;
+      margin: 0px;
+    }
+    
+    @keyframes nodeInserted {
+      from {
+        opacity: 0.999;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .js-time {
+      font-family: times, Times New Roman, times-roman, georgia, serif;
+      animation-name: nodeInserted;
+      animation-duration: 0.001s;
+    }
+    
+    @keyframes left-rotate {
+      0% {
+        -webkit-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+      }
+      25% {
+        -webkit-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+      }
+      50% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      75% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+    
+    @keyframes right-rotate {
+      0% {
+        -webkit-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+      }
+      25% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      50% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      75% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+    
+    @keyframes bar-down {
+      from {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+      }
+      to {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+      }
+    }
+    
+    .circle-countdown {
+      background: slategrey;
+      position: relative;
+      height: 50%;
+      float: left;
+      width: 25%;
+    }
+    
+    .countdown-right, .countdown-left {
+      animation-iteration-count: inherit;
+      animation-duration: inherit;
+      overflow: hidden;
+      height: 100%;
+      float: left;
+      width: 50%;
+    }
+    
+    .countdown-right::before, .countdown-left::before {
+      animation-iteration-count: inherit;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      animation-duration: inherit;
+      box-sizing: border-box;
+      border-style: solid;
+      border-color: white;
+      border-width: 20px;
+      display: block;
+      height: 100%;
+      width: 100%;
+      content: '';
+    }
+    
+    .countdown-left::before {
+      border-bottom-left-radius: 999px;
+      transform-origin: center right;
+      border-top-left-radius: 999px;
+      animation-name: left-rotate;
+      border-right: none;
+    }
+    
+    .countdown-right::before {
+      border-bottom-right-radius: 999px;
+      border-top-right-radius: 999px;
+      transform-origin: center left;
+      animation-name: right-rotate;
+      border-left: none;
+    }
+    
+    .center {
+      margin-left: -50px;
+      position: absolute;
+      margin-top: -50px;
+      left: 50%;
+      top: 50%;
+    }
+    
+    .circle {
+      box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+      height: 100px;
+      width: 100px;
+    }
+    
+    .countdown {
+      -webkit-user-select: none;
+      font-family: Helvetica;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      line-height: 100px;
+      text-align: center;
+      user-select: none;
+      font-weight: 800;
+      font-size: 30px;
+      cursor: default;
+      color: #495968;
+      z-index: 2;
+    }
+	
+	.js-time .countdown {
+		color: white;
+	}
+    
+    .circle-countdown .countdown {
+      position: absolute;
+      width: 100%;
+    }
+    
+    .bar-countdown .countdown {
+      vertical-align: middle;
+      display: table-cell;
+    }
+    
+    .bar-countdown {
+      background: slategrey;
+      position: relative;
+      display: table;
+      height: 100%;
+      width: 50px;
+      float: left;
+    }
+    
+    .bar-countdown-back {
+      background: rgba(255, 255, 255, 0.2);
+      left: calc(50% - 25px);
+      position: absolute;
+      overflow: hidden;
+      height: 100%;
+      width: 50px;
+    }
+    
+    .bar-countdown-back::after {
+      background: rgba(255, 255, 255, 0.3);
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-duration: inherit;
+      animation-name: bar-down;
+      display: block;
+      height: 100%;
+      width: 100%;
+      content: '';
+    }
+    
+    .notify-box {
+      margin: 33.3px 33.3vw;
+      position: fixed;
+      width: 33.3vw;
+      height: auto;
+      bottom: 0px;
+    }
+    
+    .js-notify {
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      border: 1px solid transparent;
+      animation-iteration-count: 1;
+      transition-duration: 1s;
+      animation-duration: 2s;
+      border-radius: 4px;
+      text-align: center;
+      position: fixed;
+      width: 33.3vw;
+      padding: 15px;
+    }
+    
+    .success {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #3c763d;
+    }
+    
+    .outline-less, .outline-less:focus, .outline-less:active {
+      outline: none;
+      border: none;
+    }
+    
+    .js-notify>.close {
+      background-color: rgba(0, 0, 0, 0);
+      position: absolute;
+      cursor: pointer;
+      font-size: 16px;
+      opacity: 0.55;
+      right: 5px;
+      top: 5px;
+    }
+    
+    .js-notify>.close::before {
+      content: '\2718';
+    }
+    
+    .js-notify>.close:hover, .js-notify>.close:active {
+      opacity: 1;
+    }
+    
+    .js-notify>.close:active {
+      transform: translateY(-1px);
+      font-size: 17px;
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+      to {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeOutUp {
+      0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+    }
+    
+    .fadeInDown {
+      animation-name: fadeInDown;
+    }
+    
+    .fadeOutUp {
+      animation-name: fadeOutUp;
+    }
