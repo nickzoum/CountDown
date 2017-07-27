@@ -66,6 +66,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
     function dateToString(date, format) {
         date = date instanceof Date && date.valueOf() >= 0 ? date : new Date();
         format = format && (typeof format === "string") ? format : "HH:mm dd/MM/yy";
+        var fs = (date.getSeconds()) + date.getMinutes() * 60;
         var year = String(date.getFullYear());
         var month = String(date.getMonth() + 1);
         var monthDate = String(date.getDate());
@@ -77,7 +78,6 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
         var hour24 = String(hour);
         var min = String(date.getMinutes());
         var sec = String(date.getSeconds());
-        var fs = (sec - 0) + min * 60;
         return massReplace(format,
             [
                 { regex: /EEEE/g, text: weekDay },
@@ -224,7 +224,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
             this.setText(dateContext);
         }, initTime: function initTime() {
             var self = this;
-            this.refreshTimer = parseFloat(this.refreshTimer || 0);
+            this.refreshTimer = parseFloat(!isNaN(this.refreshTimer) ? isNaN(this.refreshTimer) :  0);
             this.dateFormat = this.dateFormat || "HH:mm dd/MM/yy";
             if (this.refreshTimer !== 0) setInterval(function () {
                 self.refresh.call(self);
@@ -244,7 +244,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
         }, initTime: function initTime() {
             this.dateFormat = this.dateFormat || "fs";
             this.countDown = parseFloat(this.countDown || 20);
-            this.refreshTimer = parseFloat(this.refreshTimer || 1);
+            this.refreshTimer = parseFloat(!isNaN(this.refreshTimer) ? isNaN(this.refreshTimer) :  1);
         }
     });
     define("bar-countdown", {
@@ -253,7 +253,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
                 "<div class='js-time countdown' js-time-format='" + this.dateFormat + "' js-time-start-at='" + this.countDown + "' js-time-refresh='" + this.refreshTimer + "'></div>";
             this.setHtml(text);
         }, initTime: function initTime() {
-            this.refreshTimer = parseFloat(this.refreshTimer || 1);
+            this.refreshTimer = parseFloat(!isNaN(this.refreshTimer) ? isNaN(this.refreshTimer) :  1);
             this.countDown = parseFloat(this.countDown || 20);
             this.dateFormat = this.dateFormat || "fs";
         }
@@ -281,7 +281,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
         initTime: function initTime() {
             this.countDown = parseFloat(this.countDown || 20);
             this.msCountDown = this.countDown * 1000;
-            this.refreshTimer = parseFloat(this.refreshTimer || 1);
+            this.refreshTimer = parseFloat(!isNaN(this.refreshTimer) ? isNaN(this.refreshTimer) :  1);
             this.dateTime = new Date(this.msCountDown);
             this.dateFormat = this.dateFormat || "fs";
             this.startTime = Date.now() + 100;
