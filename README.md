@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">CountDown</h3>
+  <h3 align="center" style="font-size: 2em;" >CountDown</h3>
   <p align="center">An JavaScript library that shows and manage time</p>
 </p>
 
@@ -135,7 +135,7 @@ DateTimeExtension.defineAction("color-date", {
     var red = Math.floor(Math.random() * 256);
     var green = Math.floor(Math.random() * 256);
     var blue = Math.floor(Math.random() * 256);
-    this.setHtml("<span style='color: rgb(" + red + ", " + green + ", " + blue + ")'>" + dateContext + "</span>");
+    this.setHtml("<span style='color: rgb(" + red + ", " + green + ", " + blue + ");'>" + dateContext + "</span>");
   }, initTime: function initTime() {
     var self = this;
     this.refreshTimer = parseFloat(this.refreshTimer || 1);
