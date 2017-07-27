@@ -39,10 +39,10 @@ examples/
 
 To use this library you need to add the ```javascript js-timer``` classname to a ```html div``` element and then one of the below classnames based on the functionality you want
 
-- [need-date] Simply writes the current time
-- [countdown] A simple text counting down to 0
-- [circle-countdown] A circular timer counting down to 0
-- [bar-countdown] A vertical timer bar showing counting down to 0
+- <b>need-date</b> - Simply writes the current time
+- <b>countdown</b> - A simple text counting down to 0
+- <b>circle-countdown</b> - A circular timer counting down to 0
+- <b>bar-countdown</b> - A vertical timer bar showing counting down to 0
 
 ## Creating Custom Timers
 
