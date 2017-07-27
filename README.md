@@ -109,7 +109,7 @@ function setText(text: string): void
  */
 function setHtml(text: string): void
 /**
- * To be called when the element needs to eb refreshed
+ * To be called when the element needs to be refreshed
  * @returns {void}
  */
 function refresh(): void
