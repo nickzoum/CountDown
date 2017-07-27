@@ -120,3 +120,22 @@ function refresh(): void
  */
 function executeCallBack(element: HTMLElement): void
 ```
+
+For example here is a simple timer that shows the time and changes color every second
+```javascript
+DateTimeExtension.defineAction("color-date", {
+  doAction: function doAction(dateContext) {
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+    this.setHtml("<span style='color: rgb(" + red + ", " + green + ", " + blue + ")'>" + dateContext + "</span>");
+  }, initTime: function initTime() {
+    var self = this;
+    this.refreshTimer = parseFloat(this.refreshTimer || 1);
+    this.dateFormat = this.dateFormat || "HH:mm dd/MM/yy";
+    if (this.refreshTimer !== 0) setInterval(function () {
+      self.refresh.call(self);
+    }, this.refreshTimer * 1000);
+  }
+});
+```
