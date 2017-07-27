@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nickzoum/CountDown/master/examples/basic/icon.ico" />
+  <img src="https://raw.githubusercontent.com/nickzoum/CountDown/master/Examples/basic/icon.ico" />
   <h3 align="center">CountDown</h3>
   <p align="center">A JavaScript library to manage time</p>
 </p>
