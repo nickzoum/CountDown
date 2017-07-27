@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nickzoum/CountDown/master/Examples/basic/icon.ico" />
   <h3 align="center">CountDown</h3>
   <p align="center">An JavaScript library to show and manage time</p>
 </p>
@@ -42,4 +41,4 @@ To be written
 
 ## Creating Custom Timers
 
-To be written
+window.DateTimeExtension.defineAction("insert-classname", {/* add object properties */});
