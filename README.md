@@ -1,13 +1,13 @@
 <p align="center">
-  <h3 align="center">CountDown</h3>
-  <p align="center">An JavaScript library to show and manage time</p>
+  <h2 align="center">CountDown</h3>
+  <p align="center">An JavaScript library that shows and manage time</p>
 </p>
 
 ## Table of Contents
 
 - [Intro](#intro)
 - [What's included](#whats-included)
-- [Documentation](#documentation)
+- [Showing simple timers](#showing-simple-timers)
 - [Creating Custom Timers](#creating-custom-timers)
 
 ## Intro
@@ -35,10 +35,17 @@ examples/
     └── icon.ico
 ```
 
-## Documentation
+## Showing simple timers
 
-To be written
+To use this library you need to add the ```javascript js-timer``` classname to a ```html div``` element and then one of the below classnames based on the functionality you want
+
+- [need-date] Simply writes the current time
+- [countdown] A simple text counting down to 0
+- [circle-countdown] A circular timer counting down to 0
+- [bar-countdown] A vertical timer bar showing counting down to 0
 
 ## Creating Custom Timers
 
-window.DateTimeExtension.defineAction("insert-classname", {/* add object properties */});
+```javascript
+DateTimeExtension.defineAction("insert-classname", {/* add object properties */});
+```
