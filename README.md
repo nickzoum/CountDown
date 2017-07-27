@@ -37,15 +37,21 @@ examples/
 
 ## Showing simple timers
 
-To use this library you need to add the ```javascript js-timer``` classname to a ```html div``` element and then one of the below classnames based on the functionality you want
+To use this library you need to add the ```js-timer``` classname to a ```div``` element and then one of the below classnames based on the functionality you want
 
 - <b>need-date</b> - Simply writes the current time
 - <b>countdown</b> - A simple text counting down to 0
 - <b>circle-countdown</b> - A circular timer counting down to 0
 - <b>bar-countdown</b> - A vertical timer bar showing counting down to 0
 
+You can also set some properties on each of the elements
+
+- <b>js-time-format</b> - Sets the format of the time, default is ```HH:mm dd/MM/yy``` (use custom ```fs``` for full seconds, which is default for countdowns)
+- <b>js-time-start-at</b> - This is used for countdowns, it sets the start time in seconds, default is 20
+- <b>js-time-refresh</b> - How often the timer needs to refresh in seconds, default is 1
+
 ## Creating Custom Timers
 
 ```javascript
-DateTimeExtension.defineAction("insert-classname", {/* add object properties */});
+DateTimeExtension.defineAction("your-custom-classname", {/* your custom object properties */});
 ```
