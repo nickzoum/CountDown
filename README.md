@@ -121,6 +121,13 @@ function refresh(): void
 function executeCallBack(element: HTMLElement): void
 ```
 
+Here are all of the existing properties that you can use
+
+ - <b>refreshTimer</b> - How often the timer should refresh (seconds)
+ - <b>countDown</b> - Start time of countdown (seconds)
+ - <b>dateFormat</b> - ToString format of the date
+ - <b>elem</b> - The htmlelement of the timer
+
 For example here is a simple timer that shows the time and changes color every second
 ```javascript
 DateTimeExtension.defineAction("color-date", {
