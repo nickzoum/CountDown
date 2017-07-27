@@ -1,5 +1,5 @@
 var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var lowerCallBackEvent = newEvent("callback");
     var capitalCallBackEvent = newEvent("callBack");
@@ -8,7 +8,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
         dateToString: dateToString,
         defineAction: defineAction
     };
-	
+
     var RefreshAble = {
         refresh: function refresh() {
             if (this.isActive) this.doAction(dateToString(this.getDate(), this.dateFormat));
@@ -56,7 +56,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
     RefreshAble.initTime.cannotBeOverridden = false;
     RefreshAble.doAction.cannotBeOverridden = false;
     RefreshAble.onCallBack.cannotBeOverridden = false;
-	
+
     /**
      * Custom toString method for dates
      * @param {Date} date - date object
@@ -64,7 +64,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
      * @returns {string}
      */
     function dateToString(date, format) {
-        date = isNullDate(date);
+        date = date instanceof Date && date.valueOf() >= 0 ? date : new Date();
         format = format && (typeof format === "string") ? format : "HH:mm dd/MM/yy";
         var year = String(date.getFullYear());
         var month = String(date.getMonth() + 1);
@@ -132,10 +132,10 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
         if (min != -1) {
             var diff = min - text.length;
             if (diff > 0) {
-				var extra = "";
-				for(var index = 0; index < diff; index++) {
-					extra += "0";
-				}
+                var extra = "";
+                for (var index = 0; index < diff; index++) {
+                    extra += "0";
+                }
                 text = extra + text;
             }
         }
@@ -145,16 +145,6 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
             }
         }
         return text;
-    }
-
-    /**
-     * Accepts a date parameter, if its valid it returns it, otherwise the current date is returned
-     * @param {Date} date - Input date
-     * @returns {Date} - Valid date
-     */
-    function isNullDate(date) {
-		if(date instanceof Date && date.valueOf() >= 0) return date;
-		else return new Date();
     }
 
     function executeCallBack(elem) {
@@ -168,10 +158,10 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
     }
 
     function defineAction(id, action) {
-		var actionFound = false, index = 0;
-		while(!actionFound && index < actionList.length) {
-			actionFound = actionList[index++].id === id;
-		}
+        var actionFound = false, index = 0;
+        while (!actionFound && index < actionList.length) {
+            actionFound = actionList[index++].id === id;
+        }
         if (actionFound === false) {
             var newTemplate = Object.create(RefreshAble);
             for (var key in action) {
@@ -186,7 +176,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
         }
     }
 
-	function callBackEval(text) {
+    function callBackEval(text) {
         if (typeof text === "string") {
             text = text.trim();
             if (text.length > 0) {
@@ -201,7 +191,7 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
             }
         }
     }
-	
+
     function onActionDone(event) {
         var elem = event.target;
         var list = elem.classList;
@@ -220,12 +210,12 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
             }
         }
     }
-	
+
     document.addEventListener("animationstart", onActionDone, false);
     document.addEventListener("MSAnimationStart", onActionDone, false);
     document.addEventListener("webkitAnimationStart", onActionDone, false);
-	
-	return publicApi;
+
+    return publicApi;
 })(window, function (name) { var event = document.createEvent('Event'); event.initEvent(name, true, false); return event; });
 
 (function ActionDefinitionsIIFE(define) {
@@ -233,12 +223,12 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
         doAction: function doAction(dateContext) {
             this.setText(dateContext);
         }, initTime: function initTime() {
-			var self = this;
+            var self = this;
             this.refreshTimer = parseFloat(this.refreshTimer || 0);
             this.dateFormat = this.dateFormat || "HH:mm dd/MM/yy";
-			if (this.refreshTimer !== 0) setInterval(function() {
-				self.refresh.call(self);
-			}, this.refreshTimer * 1000);
+            if (this.refreshTimer !== 0) setInterval(function () {
+                self.refresh.call(self);
+            }, this.refreshTimer * 1000);
         }
     });
     define("circle-countdown", {
@@ -281,9 +271,9 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
             }
             this.refresh();
             if (this.isComplete) {
-				clearInterval(this.intervalId);
-				this.onCallBack();
-			}
+                clearInterval(this.intervalId);
+                this.onCallBack();
+            }
         },
         onCallBack: function onCallBack() {
             this.executeCallBack(this.elem.parentElement.parentElement);
@@ -296,10 +286,10 @@ var DateTimeExtension = (function MainModuleIIFE(javascript, newEvent) {
             this.dateFormat = this.dateFormat || "fs";
             this.startTime = Date.now() + 100;
             this.isComplete = false;
-			var self = this;
-			this.intervalId = setInterval(function() {
-				self.onLoop.call(self);
-			}, this.refreshTimer * 1000);
+            var self = this;
+            this.intervalId = setInterval(function () {
+                self.onLoop.call(self);
+            }, this.refreshTimer * 1000);
         }
     });
 })(window.DateTimeExtension.defineAction);
