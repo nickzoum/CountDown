@@ -1,5 +1,5 @@
 <p align="center">
-  <h2 align="center">CountDown</h3>
+  <h1 align="center">CountDown</h3>
   <p align="center">An JavaScript library that shows and manage time</p>
 </p>
 
